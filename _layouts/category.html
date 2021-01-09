@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div class='o-wrapper'>
+  <div class='o-grid' style='padding: 0 16px 0 16px;'>
+    <h1 class='category-name'>return0/{{ page.title }}</h1>
+    <hr>
+      {% assign category = page.category | default: page.title %}
+      {% for post in site.categories[category] %}
+          <div class='c-post-box'>
+          <h2 class='c-post-box-title'>
+            <a href='{{ post.url }}'>{{ post.title }}</a>
+          </h2>
+          <span class='c-post-box-content'>- {{ post.content }}</span>
+          <time class='c-post-box-date'>{{ post.date | date: '%Y-%m-%d' }}</time>
+        </div>
+      {% endfor %}
+    </div>
+</div>

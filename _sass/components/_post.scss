@@ -8,7 +8,7 @@
 
   &__title {
     font-size: double($font-size-tiny);
-    margin-bottom: $base-spacing-unit;
+    margin-bottom: $base-spacing-unit / 2;
 
     @include mq($from: tablet) {
       font-size: double($font-size-small);
@@ -17,7 +17,7 @@
 
   &__date {
     position: relative;
-    padding-top: $base-spacing-unit;
+    padding-top: $base-spacing-unit / 2;
     display: block;
     text-align: center;
     margin-bottom: $base-spacing-unit;

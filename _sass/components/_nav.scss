@@ -9,7 +9,6 @@
 
   &__link {
     display: block;
-    transition: $global-transition;
 
     &--current {
       color: $color-brand;
@@ -20,7 +19,6 @@
     }
 
     @include attention() {
-      color: $color-brand;
       text-decoration: none;
     }
   }

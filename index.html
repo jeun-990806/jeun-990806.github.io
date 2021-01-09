@@ -4,11 +4,12 @@ layout: default
 
 <div class='o-wrapper'>
   <div class='o-grid'>
-    {% for post in paginator.posts %}
-      {% include post-card.liquid %}
-    {% endfor %}
+    <div class='index-image'></div>
+    <div class='index-content'>
+      진심으로 아무것도 하기 싫다
+    </div>
   </div>
-
+  
   <div class='o-grid'>
     {% include pagination.html %}
   </div>
