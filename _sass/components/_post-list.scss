@@ -4,10 +4,16 @@
 
 .category-name {
     display: block;
-    margin: 0 0 double($base-spacing-unit) 0;
+    margin: 0;
     width: 100%;
     text-align: right;
     text-decoration: underline;
+}
+
+.category-description {
+    display: block;
+    margin: 0 0 double($base-spacing-unit) 0;
+    text-align: right;
 }
 
 .c-post-box {
