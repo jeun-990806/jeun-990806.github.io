@@ -4,10 +4,12 @@
 
 .c-post {
   margin: 0 auto;
+  width: 100%;
   max-width: 740px;
+  border-bottom: 1px solid $bg-color-gray;
+  line-height: $font-size-small * 1.5;
 
   &__title {
-    font-size: double($font-size-tiny);
     margin-bottom: $base-spacing-unit / 2;
 
     @include mq($from: tablet) {

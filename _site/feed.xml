@@ -5,10 +5,22 @@
     <description></description>
     <link>https://jeun-990806.github.io//</link>
     <atom:link href="https://jeun-990806.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Jan 2021 00:40:06 +0900</pubDate>
-    <lastBuildDate>Sun, 10 Jan 2021 00:40:06 +0900</lastBuildDate>
+    <pubDate>Mon, 11 Jan 2021 18:51:29 +0900</pubDate>
+    <lastBuildDate>Mon, 11 Jan 2021 18:51:29 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
 
+    
+      <item>
+        <title>Second Test is Liquid--</title>
+        <description>&lt;p&gt;:scream_cat: 테스트는 해도 해도 끝이 없구나…&lt;br /&gt;
+사서 고생하게 된 건 다 내 잘못이다.&lt;br /&gt;
+다시는 안 해!!&lt;br /&gt;
+(이렇게 말하고서 또 하러 가겠지)&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 +0900</pubDate>
+        <link>https://jeun-990806.github.io//project/2021/01/01/emojitest/</link>
+        <guid isPermaLink="true">https://jeun-990806.github.io//project/2021/01/01/emojitest/</guid>
+      </item>
     
 
     
@@ -19,11 +31,17 @@
       
         
           <item>
-            <title>About</title>
-            <description>  :relaxed:</description>
+            <title>about</title>
+            <description>&lt;center&gt;
+    &lt;img src=&apos;images/about.jpg&apos; width=&apos;50%&apos; height=&apos;50%&apos;&gt;
+
+    &amp;nbsp;
+ &lt;/center&gt;</description>
             <link>https://jeun-990806.github.io//about.html</link>
           </item>
         
+      
+    
       
     
       

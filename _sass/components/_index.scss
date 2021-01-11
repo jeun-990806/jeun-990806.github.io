@@ -3,7 +3,8 @@
 \*------------------------------------*/
 
 .index-image {
-    background-image: url('main.jpg');
+    display: block;
+    background-image: url('images/main.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0 auto;
@@ -12,5 +13,6 @@
 }
 
 .index-content {
+    display: block;
     margin: 20px auto;
 }

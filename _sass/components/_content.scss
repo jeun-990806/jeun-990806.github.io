@@ -3,6 +3,7 @@
 \*------------------------------------*/
 
 .c-content {
+  line-height: $font-size-small * 1.5;
   a:not(.c-btn) {
     text-decoration: underline;
     text-decoration-skip: ink;

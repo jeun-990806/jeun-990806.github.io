@@ -3,8 +3,8 @@
 \*------------------------------------*/
 
 .category-name {
-    display: inline;
-    margin: 0;
+    display: block;
+    margin: 0 0 double($base-spacing-unit) 0;
     width: 100%;
     text-align: right;
     text-decoration: underline;
@@ -13,7 +13,7 @@
 .c-post-box {
     margin: $base-spacing-unit 0;
     width: 100%;
-    border-bottom: 1px solid #E9EFF3;
+    border-bottom: 1px solid $bg-color-gray;
 }
 
 .c-post-box-title {
@@ -41,12 +41,15 @@
 
     p {
         display: inline;
+        white-space: nowrap;
+        overflow: hidden;
     }
 }
 
 .c-post-box-date {
-    display:block; 
-    margin-top: 0px; 
+    display: block; 
+    margin-top: -12px; 
+    width: 100%;
     text-align: right; 
     font-size: $font-size-tiny;
 }
