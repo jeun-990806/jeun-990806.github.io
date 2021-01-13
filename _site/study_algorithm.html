@@ -6,10 +6,12 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-  <title>study</title>
+  <title>study_algorithm</title>
   <meta name='description' content="">
-  <link rel='canonical' href="https://jeun-990806.github.io//study.html">
+  <link rel='canonical' href="https://jeun-990806.github.io//study_algorithm.html">
   <link rel='alternate' type='application/rss+xml' title='Return-Zero;' href="https://jeun-990806.github.io//feed.xml">
+  <link rel="shortcut icon" href="https://jeun-990806.github.io/favicon.ico">
+  <link rel="icon" href="https://jeun-990806.github.io/favicon.ico">
 
   <style>
     
@@ -78,7 +80,15 @@
   
     
       <li class='c-nav__item' role='presentation'>
-        <a class='c-nav__link' href='/study.html'>study</a>
+        <a class='c-nav__link' href='/study_algorithm.html'>study_algorithm</a>
+      </li>
+    
+  
+
+  
+    
+      <li class='c-nav__item' role='presentation'>
+        <a class='c-nav__link' href='/study_data-analytics.html'>study_data-analytics</a>
       </li>
     
   
@@ -96,7 +106,7 @@
 
       <div class='o-wrapper'>
   <div class='o-grid' style='padding: 0 16px 0 16px;'>
-    <h1 class='category-name'>return0/study</h1>
+    <h1 class='category-name'>return0/study_algorithm</h1>
     <span class='category-description'>코딩 테스트 공부</span>
       
       
@@ -104,11 +114,11 @@
 </div>
 
 <script language='javascript'>
-
   var content_bf = document.getElementsByClassName('c-post-box-content');
-  var inner_tag_p = content_bf[0].innerHTML.replace(/<br>/gi, '\n');
-  content_bf[0].innerHTML = inner_tag_p;
-
+  for(var i = 0; i < content_bf.length; i++) {
+    var inner_tag_p = content_bf[i].innerHTML.replace(/(<([^>]+)>)/gi, "");
+    content_bf[i].innerHTML = inner_tag_p;
+  }
 </script>
 
     <footer class='c-footer'>

@@ -20,9 +20,9 @@ layout: default
 </div>
 
 <script language='javascript'>
-
   var content_bf = document.getElementsByClassName('c-post-box-content');
-  var inner_tag_p = content_bf[0].innerHTML.replace(/<br>/gi, '\n');
-  content_bf[0].innerHTML = inner_tag_p;
-
+  for(var i = 0; i < content_bf.length; i++) {
+    var inner_tag_p = content_bf[i].innerHTML.replace(/(<([^>]+)>)/gi, "");
+    content_bf[i].innerHTML = inner_tag_p;
+  }
 </script>

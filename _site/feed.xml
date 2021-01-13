@@ -5,21 +5,45 @@
     <description></description>
     <link>https://jeun-990806.github.io//</link>
     <atom:link href="https://jeun-990806.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Jan 2021 19:22:06 +0900</pubDate>
-    <lastBuildDate>Mon, 11 Jan 2021 19:22:06 +0900</lastBuildDate>
+    <pubDate>Wed, 13 Jan 2021 20:38:50 +0900</pubDate>
+    <lastBuildDate>Wed, 13 Jan 2021 20:38:50 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
 
     
       <item>
-        <title>Second Test is Liquid--</title>
-        <description>&lt;p&gt;:scream_cat: 테스트는 해도 해도 끝이 없구나…&lt;br /&gt;
-사서 고생하게 된 건 다 내 잘못이다.&lt;br /&gt;
-다시는 안 해!!&lt;br /&gt;
-(이렇게 말하고서 또 하러 가겠지)&lt;/p&gt;
+        <title>개발 계획서</title>
+        <description>&lt;h2 id=&quot;1-개발-툴&quot;&gt;1. 개발 툴&lt;/h2&gt;
+&lt;p&gt;oven&lt;br /&gt;
+android studio&lt;/p&gt;
+
+&lt;h2 id=&quot;2-개발-기간&quot;&gt;2. 개발 기간&lt;/h2&gt;
+
+&lt;h4 id=&quot;2-1-function-point-estimation&quot;&gt;2-1. Function Point Estimation&lt;/h4&gt;
+
+&lt;h4 id=&quot;2-2-work-plan-gantt-chart&quot;&gt;2-2. Work Plan (Gantt chart)&lt;/h4&gt;
 </description>
-        <pubDate>Fri, 01 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://jeun-990806.github.io//project/2021/01/01/emojitest/</link>
-        <guid isPermaLink="true">https://jeun-990806.github.io//project/2021/01/01/emojitest/</guid>
+        <pubDate>Wed, 13 Jan 2021 00:00:00 +0900</pubDate>
+        <link>https://jeun-990806.github.io//project/2021/01/13/02developmentplan/</link>
+        <guid isPermaLink="true">https://jeun-990806.github.io//project/2021/01/13/02developmentplan/</guid>
+      </item>
+    
+      <item>
+        <title>Plannetary 소개</title>
+        <description>&lt;h2 id=&quot;1-개요&quot;&gt;1. 개요&lt;/h2&gt;
+
+&lt;h4 id=&quot;1-1-개선된-일정-관리-애플리케이션의-필요성&quot;&gt;1-1. 개선된 일정 관리 애플리케이션의 필요성&lt;/h4&gt;
+
+&lt;h2 id=&quot;2-소개&quot;&gt;2. 소개&lt;/h2&gt;
+
+&lt;h4 id=&quot;2-1-인터페이스&quot;&gt;2-1. 인터페이스&lt;/h4&gt;
+
+&lt;h4 id=&quot;2-2-일정-분배-기능&quot;&gt;2-2. 일정 분배 기능&lt;/h4&gt;
+
+&lt;h4 id=&quot;2-3-미뤄두기-기능&quot;&gt;2-3. 미뤄두기 기능&lt;/h4&gt;
+</description>
+        <pubDate>Wed, 13 Jan 2021 00:00:00 +0900</pubDate>
+        <link>https://jeun-990806.github.io//project/2021/01/13/01introduce/</link>
+        <guid isPermaLink="true">https://jeun-990806.github.io//project/2021/01/13/01introduce/</guid>
       </item>
     
 
@@ -40,6 +64,8 @@
             <link>https://jeun-990806.github.io//about.html</link>
           </item>
         
+      
+    
       
     
       
