@@ -22,3 +22,9 @@ layout: default
       </article>
   </div>
 </div>
+
+<script language='javascript'>
+  var content_bf = document.getElementsByClassName('c-post__title u-text-center');
+  var inner_tag_p = content_bf[0].innerHTML.replace(/_/gi, "<br>");
+  content_bf[0].innerHTML = inner_tag_p;
+</script>

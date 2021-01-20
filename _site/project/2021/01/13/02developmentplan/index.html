@@ -88,7 +88,7 @@
   
     
       <li class='c-nav__item' role='presentation'>
-        <a class='c-nav__link' href='/study_data-analytics.html'>study_data-analytics</a>
+        <a class='c-nav__link' href='/study_data-analysis.html'>study_data-analysis</a>
       </li>
     
   
@@ -122,15 +122,62 @@
 android studio</p>
 
 <h2 id="2-개발-기간">2. 개발 기간</h2>
-
 <h4 id="2-1-function-point-estimation">2-1. Function Point Estimation</h4>
+<p>EI : 회원 정보, 로그인 정보, 일정, 자동 분배 일정, 장소, 분류, 환경 설정
+EO : 
+EQ :
+ILF : 
+EIF :</p>
+
+<p>EI = 3<em>3 + 3</em>4 + 1<em>6 = 27<br />
+EO = 0</em>4 + 1<em>5 + 1</em>7 = 12<br />
+EQ = 4<em>3 + 0</em>4 + 0<em>6 = 12<br />
+ILF = 1</em>7 + 1<em>10 + 0</em>15 = 17<br />
+EIF = 0<em>5 + 1</em>7 + 0<em>10 = 7<br />
+(</em>가중치는 2학년 2학기에 들은 소프트웨어설계 과목에서 잡은 기준을 그대로 따른 것이다.)</p>
+
+<p>데이터 통신 : 3<br />
+사용 환경 : 1<br />
+온라인 데이터 : 1<br />
+사용자 효율성 : 3<br />
+온라인 갱신 : 2<br />
+재사용성 : 3<br />
+PC = 13</p>
+
+<p>APC = 0.65+(0.01<em>13) = 0.78<br />
+TAFP = 0.78</em>75 = 58.5<br />
+Lines of Code = 60<em>58.5 = 3510<br />
+COCOMO effort estimation = 1.4</em>3.51 = 4.914 -&gt; (약) <strong>5 Person-Month</strong><br />
+Schedule time = 5^(1/3)*3 = <strong>5 Month</strong></p>
+
+<p>UI 구상에 필요한 시간, 그리고 개발자의 숙련도와 개인 일정까지 고려하여 개발 기간을 6개월로 잡았다.</p>
 
 <h4 id="2-2-work-plan-gantt-chart">2-2. Work Plan (Gantt chart)</h4>
+
+<p>2021-01-15~2021-01-17 : UI 구상에 필요한 자료, 툴 탐색 <br />
+2021-01-18~2021-01-25 : UI 구상 및 리소스 구하기<br />
+2021-01-26~2021-02-01 : UI 구현<br />
+2021-02-09~2021-02-16 : Class Diagram 작성(디자인 패턴 관련 서적 참고)<br />
+2021-02-17~2021-03-20 : 데이터베이스 구축<br />
+2021-03-21~2021-04-01 : 일반적인 일정 기능 + 데이터베이스 연동 기능 개발<br />
+2021-04-02~2021-04-16 : 미루기 일정 기능 개발<br />
+2021-04-17~2021-05-17 : 일정 분배 기능 개발<br />
+2021-05-18~2021-05-28 : 알림 기능 개발<br />
+그룹, 장소<br />
+커스터마이징<br />
+실제 사용 테스트<br />
+출시</p>
 
         </div>
       </article>
   </div>
 </div>
+
+<script language='javascript'>
+  var content_bf = document.getElementsByClassName('c-post__title u-text-center');
+  var inner_tag_p = content_bf[0].innerHTML.replace(/_/gi, "<br>");
+  content_bf[0].innerHTML = inner_tag_p;
+</script>
 
     <footer class='c-footer'>
   <div class='o-grid'>
