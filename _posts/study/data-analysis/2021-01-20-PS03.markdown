@@ -15,13 +15,13 @@ fish_data = np.array([2, 3, 3, 4, 4, 4, 4, 5, 5, 6])
 수조에 있는 물고기들의 몸 길이를 리스트에 저장한다. 이렇게 한 가지 종류의 데이터만 있는 1변량 데이터를 가지고 여러 통계적 수치를 구하는 과정들을 살펴보자.  
 numpy, scipy 모듈을 사용했고, numpy는 np, scipy는 sp로 표현한다.  
 
-##### 1-1. 총합과 샘플 사이즈
+#### 1-1. 총합과 샘플 사이즈
 ```python
 total = np.sum(fish_data) #합계
 sample_size = len(fish_data) #sample size
 ```
 
-##### 1-2. 평균, 분산, 불편분산, 표준편차
+#### 1-2. 평균, 분산, 불편분산, 표준편차
 ```python
 mean = total/sample_size #평균
 var = np.sum((fish_data - mean) ** 2) / sample_size #분산
@@ -33,7 +33,7 @@ sigma = np.std(fish_data, ddof=1) #numpy의 함수를 이용하여 표준편차 
 평균을 이용하여 구한 분산은 실제 표본의 분산보다 낮다고 한다. 그 이유는 (찾아볼 것). 분산을 구할 때 sample size로 나눠주는 것 대신 (sample size - 1)을 나눠주면 그 오차가 줄어든다. 
 그래서 이를 불편분산-unbiased한 분산이라고 부른다. numpy 함수로 분산과 표준편차를 구하게 되면, ddof(degree of freedom, 자유도)를 설정할 수 있다. 자유도를 1로 설정하면 불편분산이 나온다.
 
-##### 1-3. 표준화
+#### 1-3. 표준화
 데이터의 평균을 0으로, 표준편차/분산을 1로 바꾸는 변환을 표준화라고 한다. 데이터들에 각각 평균을 빼 주면 평균이 0이 되고, 각각 표준편차로 나눠 주면 분산이 1이 된다. 
 이 두 변환을 합치면 표준화를 할 수 있다.
 
@@ -41,7 +41,7 @@ sigma = np.std(fish_data, ddof=1) #numpy의 함수를 이용하여 표준편차 
 standard = (fish_data - mean) / sigma #두 변환을 합쳐서 표준화를 진행
 ```
 
-##### 1-4. 최댓값, 최솟값, 중앙값, 사분위수
+#### 1-4. 최댓값, 최솟값, 중앙값, 사분위수
 ```python
 np.amax(fish_data) #최댓값
 np.amin(fish_data) #최솟값
@@ -60,7 +60,7 @@ stats.scoreatpercentile(fish_data, 75)
 
 
 ## 2. 다변량 데이터 구하기
-##### 2-1. 깔끔한 데이터(Tidy Data)
+#### 2-1. 깔끔한 데이터(Tidy Data)
 2014년 해들리 위컴이 통계 소프트웨어 저널에서 처음 제시한 용어로, 다음의 특징을 갖는 데이터를 말한다.
  * 개별 값이 하나의 셀을 이룬다.
  * 개별 변수가 하나의 열을 이룬다.
