@@ -5,10 +5,25 @@
     <description></description>
     <link>https://jeun-990806.github.io//</link>
     <atom:link href="https://jeun-990806.github.io//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Jan 2021 13:36:29 +0900</pubDate>
-    <lastBuildDate>Wed, 20 Jan 2021 13:36:29 +0900</lastBuildDate>
+    <pubDate>Thu, 21 Jan 2021 16:24:01 +0900</pubDate>
+    <lastBuildDate>Thu, 21 Jan 2021 16:24:01 +0900</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
 
+    
+      <item>
+        <title>파이썬으로 배우는 통계학 교과서_3차시</title>
+        <description>&lt;p&gt;복습용 자료이며, 1차시는 확률및통계 강의에서 배운 내용(용어 정리)이고, 2차시는 대화형프로그래밍 강의에서 배운 내용(파이썬 문법)이어서 생략하였다.
+3차시의 내용은 파이썬을 이용한 통계, 데이터 분석에 대한 것이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-1변량-데이터-다루기&quot;&gt;1. 1변량 데이터 다루기&lt;/h2&gt;
+&lt;p&gt;수조에 있는 물고기들의 몸 길이를 리스트에 저장한다. 이렇게 한 가지 종류의 데이터만 있는 1변량 데이터를 가지고 여러 통계적 수치를 구하는 과정들을 살펴보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-1-합계와-샘플-사이즈&quot;&gt;1-1. 합계와 샘플 사이즈&lt;/h3&gt;
+</description>
+        <pubDate>Wed, 20 Jan 2021 00:00:00 +0900</pubDate>
+        <link>https://jeun-990806.github.io//study_data-analysis/2021/01/20/PS03/</link>
+        <guid isPermaLink="true">https://jeun-990806.github.io//study_data-analysis/2021/01/20/PS03/</guid>
+      </item>
     
       <item>
         <title>UI 구상</title>
@@ -58,15 +73,6 @@
         <pubDate>Tue, 19 Jan 2021 00:00:00 +0900</pubDate>
         <link>https://jeun-990806.github.io//project/2021/01/19/03design/</link>
         <guid isPermaLink="true">https://jeun-990806.github.io//project/2021/01/19/03design/</guid>
-      </item>
-    
-      <item>
-        <title>--</title>
-        <description>
-</description>
-        <pubDate>Fri, 15 Jan 2021 00:00:00 +0900</pubDate>
-        <link>https://jeun-990806.github.io//study_data-analysis/2021/01/15/DAfE01/</link>
-        <guid isPermaLink="true">https://jeun-990806.github.io//study_data-analysis/2021/01/15/DAfE01/</guid>
       </item>
     
       <item>
