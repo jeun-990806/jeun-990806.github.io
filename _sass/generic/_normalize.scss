@@ -360,6 +360,19 @@ textarea {
   overflow: auto;
 }
 
+table {
+  width: 100%;
+  text-align: center;
+
+  th, td {
+    border: 1px solid $color-border;
+  }
+
+  th {
+    background-color: $bg-color-gray;
+  }
+}
+
 /**
  * 1. Add the correct box sizing in IE 10-.
  * 2. Remove the padding in IE 10-.

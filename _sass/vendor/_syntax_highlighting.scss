@@ -3,11 +3,13 @@
  */
 
 .highlight {
+  padding: ($base-spacing-unit) / 2;
   margin: 0;
   background: #fff;
 
   .highlighter-rouge & {
-    background: #FAFAFA;
+    border-radius: 4px/4px;
+    background-color: $bg-color-gray;
   }
 
   .c     { color: #998; font-style: italic } // Comment

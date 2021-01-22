@@ -8,14 +8,20 @@
  * csswizardry.com/2012/06/single-direction-margin-declarations
  */
 address,
-h1, h2, h3, h4, h5, h6,
-blockquote, p, pre,
+blockquote,
 dl, ol, ul,
 figure,
 hr,
-table,
 fieldset {
   margin-bottom: double($base-spacing-unit);
+}
+
+table, p {
+  margin: $base-spacing-unit 0 $base-spacing-unit 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: $base-spacing-unit 0 $base-spacing-unit 0;
 }
 
 /**
