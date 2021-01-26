@@ -10,35 +10,108 @@ category: study_data-analysis
 ### 1. 데이터 시각화 (matplotlib, seaborn)
 
 #### 1-1. 꺾은선 그래프
-<img src='/images/posts/20210121-01.png'>
+```python
+x = numpy.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+y = numpy.array([2, 3, 4, 3, 5, 4, 6, 7, 4, 8])
+```
+x와 y의 두 배열을 만들고, 이를 꺾은선그래프로 표현하면 다음과 같다.
+
+```python
+pyplot.plot(x, y, color='black')
+pyplot.title("lineplot")
+pyplot.xlabel('x')
+pyplot.ylabel('y')
+```
+<img src='/images/posts/20210121-01.png'>  
+
+이때 seaborn의 set()함수를 쓰면 다음과 같이 배경이 바뀐다.
+
+```python
+seaborn.set()
+pyplot.plot(x, y, color='black')
+pyplot.title("lineplot")
+pyplot.xlabel('x')
+pyplot.ylabel('y')
+```
 <img src='/images/posts/20210121-02.png'>
 
 #### 1-2. 히스토그램
-주피터 노트북을 사용하여 공부하고 있는데, 아나콘다 기준 seaborn 0.11.1 사용 시 distplot에 warning 메시지가 뜬다. [seaborn 홈페이지](https://seaborn.pydata.org/index.html)를
+교재에서는 seaborn의 distplot을 사용하여 히스토그램을 나타낸다. 
+실습에 주피터 노트북을 쓰고 있는데, 아나콘다 기준 seaborn 0.11.1 사용 시 distplot에 warning 메시지가 뜬다. [seaborn 홈페이지](https://seaborn.pydata.org/index.html)를
 보면 distplot의 기능들이 displot과 histplot으로 나뉘어 들어간 것을 알 수 있다. 역시 **구글링보다는 레퍼런스를 참조하자** 
 
+```python
+fish_data = numpy.array([2, 3, 3, 4, 4, 4, 4, 5, 5, 6])
+seaborn.displot(fish_data, bins=5, color='black', kde=False)
+```
+
 <img src='/images/posts/20210121-03.png'>
+
+여기서 bins는 총 몇 개의 구간으로 나누어 표시할지를 정하는 값이다. 따라서 bins가 1이면 구간이 하나뿐이므로 다음과 같은 형태가 된다.
+
 <img src='/images/posts/20210121-04.png'>
 
 ##### 1-2-1. 커널밀도추정과 히스토그램 평활화
 distplot과 displot/histplot의 속성, 디폴트 값이 차이가 나다 보니 seaborn에서 제공하는 함수 사용법을 참고해야 했다. 일단 displot과 histplot에는 norm_hist 속성이 없고, 
 kde 기본값도 false로 설정되어 있다. 대신 stat의 값을 density로 바꿔주면 distplot을 사용한 결과처럼 히스토그램의 전체 넓이가 1이 된다.
 
+```python
+fish_data = numpy.array([2, 3, 3, 4, 4, 4, 4, 5, 5, 6])
+seaborn.displot(fish_data, color='black', kde=True, stat='density')
+```
+
 <img src='/images/posts/20210121-05.png'>
-<img src='/images/posts/20210121-06.png'>
+
+```python
+fish_data = numpy.array([2, 3, 3, 4, 4, 4, 4, 5, 5, 6])
+seaborn.histplot(fish_data, color='black', kde=True, stat='density')
+```
+
 <img src='/images/posts/20210121-07.png'>
 
+```python
+fish_data = numpy.array([2, 3, 3, 4, 4, 4, 4, 5, 5, 6])
+seaborn.distplot(fish_data, color='black')
+```
+
+distplot 사용시에는 따로 norm_hist와 kde값을 주지 않으면 된다.
+
+<img src='/images/posts/20210121-06.png'>
+
 #### 1-3. 상자그림
+```python
+fish_multi = pandas.read_csv("fish_data.csv")
+seaborn.boxplot(x = 'species', y = 'length', data = fish_multi, color = 'gray')
+```
+
 <img src='/images/posts/20210121-08.png'>
 
 #### 1-4. 바이올린플롯
+```python
+fish_multi = pandas.read_csv("fish_data.csv")
+seaborn.violinumpylot(x = 'species', y = 'length', data = fish_multi, color = 'gray')
+```
 <img src='/images/posts/20210121-09.png'>
 
 #### 1-5. 막대그래프
+```python
+fish_multi = pandas.read_csv("fish_data.csv")
+seaborn.barplot(x = 'species', y = 'length', data = fish_multi, color = 'gray')
+```
 <img src='/images/posts/20210121-10.png'>
 
 #### 1-6. 산포도
+```python
+cov_data = pandas.read_csv("covariance.csv")
+seaborn.jointplot(x = 'x', y = 'y', data = cov_data, color = 'black')
+```
 <img src='/images/posts/20210121-11.png'>
 
 #### 1-6. 페어플롯
+실습에 사용된 데이터는 seaborn에서 기본으로 제공하는 붓꽃 데이터이다.
+```python
+iris = seaborn.load_dataset('iris')
+seaborn.pairplot(iris, hue='species', palette='gray')
+```
+
 <img src='/images/posts/20210121-12.png'>

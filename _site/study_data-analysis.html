@@ -131,37 +131,98 @@
 <h3 id="1-데이터-시각화-matplotlib-seaborn">1. 데이터 시각화 (matplotlib, seaborn)</h3>
 
 <h4 id="1-1-꺾은선-그래프">1-1. 꺾은선 그래프</h4>
-<p><img src="/images/posts/20210121-01.png" />
-<img src="/images/posts/20210121-02.png" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+</code></pre></div></div>
+<p>x와 y의 두 배열을 만들고, 이를 꺾은선그래프로 표현하면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pyplot</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"lineplot"</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="/images/posts/20210121-01.png" /></p>
+
+<p>이때 seaborn의 set()함수를 쓰면 다음과 같이 배경이 바뀐다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">seaborn</span><span class="p">.</span><span class="nb">set</span><span class="p">()</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"lineplot"</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img src="/images/posts/20210121-02.png" /></p>
 
 <h4 id="1-2-히스토그램">1-2. 히스토그램</h4>
-<p>주피터 노트북을 사용하여 공부하고 있는데, 아나콘다 기준 seaborn 0.11.1 사용 시 distplot에 warning 메시지가 뜬다. <a href="https://seaborn.pydata.org/index.html">seaborn 홈페이지</a>를
+<p>교재에서는 seaborn의 distplot을 사용하여 히스토그램을 나타낸다. 
+실습에 주피터 노트북을 쓰고 있는데, 아나콘다 기준 seaborn 0.11.1 사용 시 distplot에 warning 메시지가 뜬다. <a href="https://seaborn.pydata.org/index.html">seaborn 홈페이지</a>를
 보면 distplot의 기능들이 displot과 histplot으로 나뉘어 들어간 것을 알 수 있다. 역시 <strong>구글링보다는 레퍼런스를 참조하자</strong></p>
 
-<p><img src="/images/posts/20210121-03.png" />
-<img src="/images/posts/20210121-04.png" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_data</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">fish_data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210121-03.png" /></p>
+
+<p>여기서 bins는 총 몇 개의 구간으로 나누어 표시할지를 정하는 값이다. 따라서 bins가 1이면 구간이 하나뿐이므로 다음과 같은 형태가 된다.</p>
+
+<p><img src="/images/posts/20210121-04.png" /></p>
 
 <h5 id="1-2-1-커널밀도추정과-히스토그램-평활화">1-2-1. 커널밀도추정과 히스토그램 평활화</h5>
 <p>distplot과 displot/histplot의 속성, 디폴트 값이 차이가 나다 보니 seaborn에서 제공하는 함수 사용법을 참고해야 했다. 일단 displot과 histplot에는 norm_hist 속성이 없고, 
 kde 기본값도 false로 설정되어 있다. 대신 stat의 값을 density로 바꿔주면 distplot을 사용한 결과처럼 히스토그램의 전체 넓이가 1이 된다.</p>
 
-<p><img src="/images/posts/20210121-05.png" />
-<img src="/images/posts/20210121-06.png" />
-<img src="/images/posts/20210121-07.png" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_data</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">fish_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s">'density'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210121-05.png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_data</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">fish_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s">'density'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210121-07.png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_data</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">fish_data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>distplot 사용시에는 따로 norm_hist와 kde값을 주지 않으면 된다.</p>
+
+<p><img src="/images/posts/20210121-06.png" /></p>
 
 <h4 id="1-3-상자그림">1-3. 상자그림</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_multi</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"fish_data.csv"</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">'species'</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">'length'</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">fish_multi</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'gray'</span><span class="p">)</span>
+</code></pre></div></div>
+
 <p><img src="/images/posts/20210121-08.png" /></p>
 
 <h4 id="1-4-바이올린플롯">1-4. 바이올린플롯</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_multi</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"fish_data.csv"</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">violinumpylot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">'species'</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">'length'</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">fish_multi</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'gray'</span><span class="p">)</span>
+</code></pre></div></div>
 <p><img src="/images/posts/20210121-09.png" /></p>
 
 <h4 id="1-5-막대그래프">1-5. 막대그래프</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_multi</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"fish_data.csv"</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">'species'</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">'length'</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">fish_multi</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'gray'</span><span class="p">)</span>
+</code></pre></div></div>
 <p><img src="/images/posts/20210121-10.png" /></p>
 
 <h4 id="1-6-산포도">1-6. 산포도</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cov_data</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"covariance.csv"</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">'x'</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">'y'</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">cov_data</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'black'</span><span class="p">)</span>
+</code></pre></div></div>
 <p><img src="/images/posts/20210121-11.png" /></p>
 
 <h4 id="1-6-페어플롯">1-6. 페어플롯</h4>
+<p>실습에 사용된 데이터는 seaborn에서 기본으로 제공하는 붓꽃 데이터이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">iris</span> <span class="o">=</span> <span class="n">seaborn</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'iris'</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="p">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'species'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+</code></pre></div></div>
+
 <p><img src="/images/posts/20210121-12.png" /></p>
 </span>
           <time class='c-post-box-date'>2021-01-21</time>
