@@ -1,0 +1,101 @@
+I"�F<p>복습용 자료이며, 1차시는 확률및통계 강의에서 배운 내용(용어 정리)이고, 2차시는 대화형프로그래밍 강의에서 배운 내용(파이썬 문법)이어서 생략하였다.
+3차시의 내용은 파이썬을 이용한 통계, 데이터 분석에 대한 것이다. 이번 포스트에서는 모집단에서 표본 추출 시뮬레이션을 실습하며 각 통계치들이 어떻게 나타나는지
+관찰한 결과에 대해서 다룰 것이다.</p>
+
+<h3 id="1-표본-추출">1. 표본 추출</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fish_100000</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'fish_data_100000.csv'</span><span class="p">)[</span><span class="s">'length'</span><span class="p">]</span>
+<span class="n">sampling_result</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>표본 추출은 numpy의 random.choice함수를 사용하여 할 수 있다. size는 표본의 크기, replace는 복원추출 여부를 의미한다.
+위의 코드는 10만개의 물고기 몸 길이 데이터가 있는 .csv파일을 불러와서 크기가 10인 표본을 비복원추출로 얻어낸다.</p>
+
+<h4 id="1-1-난수-시드-이용">1-1. 난수 시드 이용</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fish_100000</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'fish_data_100000.csv'</span><span class="p">)[</span><span class="s">'length'</span><span class="p">]</span>
+<span class="n">sampling_result</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>이렇게 random.seed함수로 난수 시드를 정해줄 수 있다. 다른 조건이 모두 동일하다면, 동일한 시드를 이용하여 얻어낸 표본은 전부 같다.
+교재에서는 난수 시드를 1로 주었는데, 결과값을 고정함으로써 내가 구한 값이 옳은지 확인할 수 있었다.</p>
+
+<h3 id="2-모집단의-특성-확인">2. 모집단의 특성 확인</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">))</span> <span class="c1">#모집단의 평균 = 4.000
+</span><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="c1">#모표준편차 = 0.800
+</span><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">var</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="c1">#모분산 = 0.64
+</span><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210122-01.png" /></p>
+
+<h4 id="2-1-정규분포와의-비교">2-1. 정규분포와의 비교</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mf">7.1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1">#범위 설정: 1-7
+</span><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">fish_100000</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s">'density'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">norm</span><span class="p">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210122-03.png" /></p>
+
+<h3 id="3-여러-개의-표본의-평균-구하기">3. 여러 개의 표본의 평균 구하기</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">population</span> <span class="o">=</span> <span class="n">stats</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span> <span class="c1">#모집단은 평균이 4, 표준편차가 0.8인 정규분포
+</span><span class="n">sample_mean_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">population</span><span class="p">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">sample_mean_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="3-1-표본평균의-평균값의-성질-확인">3-1. 표본평균의 평균값의 성질 확인</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_mean_array</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">std</span><span class="p">(</span><span class="n">sample_mean_array</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>결과값은 각각 4.004202422791747, 0.2513580850860402이다. 모평균과 표본평균의 평균값은 거의 같지만, 표본평균의 표준편차는 모표준편차에 비해 작은 값이다.
+히스토그램으로 나타내면 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">sample_mean_array</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s">'density'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210122-04.png" /></p>
+
+<h4 id="3-2-표본의-크기가-표본평균에-미치는-영향">3-2. 표본의 크기가 표본평균에 미치는 영향</h4>
+<p>샘플 사이즈가 커질수록 표본평균이 모평균에 가까워지는 성질을 보인다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">size_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">100100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="c1">#표본 크기가 10, 110, ..., 100010인 경우를 각각 비교
+</span><span class="n">sample_mean_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">size_array</span><span class="p">))</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">size_array</span><span class="p">)):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">population</span><span class="p">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size_array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">sample_mean_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size_array</span><span class="p">,</span> <span class="n">sample_mean_array</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'sample_size'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'sample_mean'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210122-05.png" /><br />
+위의 코드는 표본 크기가 100씩 차이나는 10만개의 표본을 추출하고, 각 표본들의 평균을 구해 그래프로 나타낸다.
+결과로 나온 그래프에서는 표본 크기가 커질수록 표본평균이 모평균인 4로 수렴해감을 볼 수 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calc_sample_mean</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span> <span class="c1">#크기가 size인 표본을 n_trials회 추출하여 얻은 n_trials개의 표본평균을 반환
+</span>    <span class="n">sample_mean_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">population</span><span class="p">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">sample_mean_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">sample_mean_array</span><span class="p">)</span>
+    <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+    <span class="n">sample_means</span> <span class="o">=</span> <span class="n">calc_sample_mean</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">sample_means_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s">'sample_mean'</span> <span class="p">:</span> <span class="n">sample_means</span><span class="p">,</span>
+        <span class="s">'size'</span> <span class="p">:</span> <span class="n">np</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="n">three_sample_means</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_means_df</span><span class="p">)</span>
+<span class="n">sim_result</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">three_sample_means</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'size'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'sample_mean'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sim_result</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/posts/20210122-06.png" /><br />
+여기서는 표본 크기를 10, 20, 30으로 해서 10만회 추출한 뒤, 각각의 표본을 바이올린플롯으로 나타낸 것이다.
+셋 다 평균은 모평균에 근접하지만, 그 분산된 정도가 표본 크기에 따라 달라짐을 한눈에 확인할 수 있다.</p>
+:ET

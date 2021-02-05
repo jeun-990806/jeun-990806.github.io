@@ -7,3 +7,155 @@ category: study_data-analysis
 복습용 자료이며, 1차시는 확률및통계 강의에서 배운 내용(용어 정리)이고, 2차시는 대화형프로그래밍 강의에서 배운 내용(파이썬 문법)이어서 생략하였다.
 3차시의 내용은 파이썬을 이용한 통계, 데이터 분석에 대한 것이다. 이번 포스트에서는 모집단에서 표본 추출 시뮬레이션을 실습하며 각 통계치들이 어떻게 나타나는지
 관찰한 결과에 대해서 다룰 것이다.
+
+### 1. 표본 추출
+```python
+fish_100000 = pd.read_csv('fish_data_100000.csv')['length']
+sampling_result = np.random.choice(fish_100000, size=10, replace=False)
+```
+
+표본 추출은 numpy의 random.choice함수를 사용하여 할 수 있다. size는 표본의 크기, replace는 복원추출 여부를 의미한다.
+위의 코드는 10만개의 물고기 몸 길이 데이터가 있는 .csv파일을 불러와서 크기가 10인 표본을 비복원추출로 얻어낸다.
+
+#### 1-1. 난수 시드 이용
+```python
+np.random.seed(1)
+fish_100000 = pd.read_csv('fish_data_100000.csv')['length']
+sampling_result = np.random.choice(fish_100000, size=10, replace=False)
+```
+
+이렇게 random.seed함수로 난수 시드를 정해줄 수 있다. 다른 조건이 모두 동일하다면, 동일한 시드를 이용하여 얻어낸 표본은 전부 같다.
+교재에서는 난수 시드를 1로 주었는데, 결과값을 고정함으로써 내가 구한 값이 옳은지 확인할 수 있었다.
+
+### 2. 모집단의 특성 확인
+```python
+print(np.mean(fish_100000)) #모집단의 평균 = 4.000
+print(np.std(fish_100000, ddof=0)) #모표준편차 = 0.800
+print(np.var(fish_100000, ddof=0)) #모분산 = 0.64
+sns.displot(fish_100000, kde=False, color='black')
+```
+
+<img src='/images/posts/20210122-01.png'>
+
+#### 2-1. 정규분포와의 비교
+```python
+x = np.arange(start=1, stop=7.1, step=0.1) #범위 설정: 1-7
+sns.displot(fish_100000, kde=False, stat='density', color='black')
+plt.plot(x, stats.norm.pdf(x=x, loc=4, scale=0.8), color='black')
+```
+
+<img src='/images/posts/20210122-03.png'>
+
+### 3. 여러 개의 표본의 평균 구하기
+```python
+population = stats.norm(loc=4, scale=0.8) #모집단은 평균이 4, 표준편차가 0.8인 정규분포
+sample_mean_array = np.zeros(10000)
+np.random.seed(1)
+for i in range(0, 10000):
+    sample = population.rvs(size=10)
+    sample_mean_array[i] = np.mean(sample)
+```
+
+#### 3-1. 표본평균의 평균값의 성질 확인
+```python
+print(np.mean(sample_mean_array))
+print(np.std(sample_mean_array, ddof=1))
+```
+
+결과값은 각각 4.004202422791747, 0.2513580850860402이다. 모평균과 표본평균의 평균값은 거의 같지만, 표본평균의 표준편차는 모표준편차에 비해 작은 값이다.
+히스토그램으로 나타내면 다음과 같다.
+
+```python
+sns.displot(sample_mean_array, kde=True, stat='density', color='black')
+```
+
+<img src='/images/posts/20210122-04.png'>
+
+#### 3-2. 표본의 크기가 표본평균에 미치는 영향
+샘플 사이즈가 커질수록 표본평균이 모평균에 가까워지는 성질을 보인다.
+
+```python
+size_array = np.arange(start=10, stop=100100, step=100) #표본 크기가 10, 110, ..., 100010인 경우를 각각 비교
+sample_mean_array = np.zeros(len(size_array))
+np.random.seed(1)
+for i in range(0, len(size_array)):
+    sample = population.rvs(size=size_array[i])
+    sample_mean_array[i] = np.mean(sample)
+plt.plot(size_array, sample_mean_array, color='black')
+plt.xlabel('sample_size')
+plt.ylabel('sample_mean')
+```
+
+<img src='/images/posts/20210122-05.png'>  
+위의 코드는 표본 크기가 100씩 차이나는 10만개의 표본을 추출하고, 각 표본들의 평균을 구해 그래프로 나타낸다.
+결과로 나온 그래프에서는 표본 크기가 커질수록 표본평균이 모평균인 4로 수렴해감을 볼 수 있다.
+
+```python
+def calc_sample_mean(size, n_trials): #크기가 size인 표본을 n_trials회 추출하여 얻은 n_trials개의 표본평균을 반환
+    sample_mean_array = np.zeros(n_trials)
+    for i in range(0, n_trials):
+        sample = population.rvs(size=size)
+        sample_mean_array[i] = np.mean(sample)
+    return(sample_mean_array)
+    np.random.seed(1)
+
+for size in [10, 20, 30]:
+    sample_means = calc_sample_mean(size=size, n_trials=10000)
+    sample_means_df = pd.DataFrame({
+        'sample_mean' : sample_means,
+        'size' : np.tile(repr(size), 10000)
+    })
+    three_sample_means.append(sample_means_df)
+sim_result = pd.concat(three_sample_means)
+sns.violinplot(x='size', y='sample_mean', data=sim_result, color='gray')
+```
+
+<img src='/images/posts/20210122-06.png'>  
+여기서는 표본 크기를 10, 20, 30으로 해서 10만회 추출한 뒤, 각각의 표본을 바이올린플롯으로 나타낸 것이다.
+셋 다 평균은 모평균에 근접하지만, 그 분산된 정도가 표본 크기에 따라 달라짐을 한눈에 확인할 수 있다.
+
+#### 3-3. 표준오차
+표준오차란 표준편차를 샘플 사이즈의 제곱근으로 나눈 값이다. 이는 표본평균의 표준편차 크기를 의미한다.
+
+```python
+size_array = np.arange(start=2, stop=102, step=2)
+sample_mean_std_array = np.zeros(len(size_array))
+np.random.seed(1)
+for i in range(0, len(size_array)): #표본 추출 -> 평균을 각각 구해 numpy의 std함수로 평균 사이 표준편차를 구한 수치
+    sample_mean = calc_sample_mean(size=size_array[i], n_trials=100)
+    sample_mean_std_array[i] = np.std(sample_mean, ddof=1)
+standard_error = 0.8 / np.sqrt(size_array) #공식을 통해 구한 이론치(standard error)
+plt.plot(size_array, sample_mean_std_array, color='black') #둘을 그래프로 나타내어 유사성 비교
+plt.plot(size_array, standard_error, color='black', linestyle='dotted')
+plt.xlabel('sample_size')
+plt.ylabel('mean_std_value')
+```
+
+<img src='/images/posts/20210122-07.png'>  
+위의 코드에서는 두 가지 방법으로 표본평균의 표준편차를 구하고 있다. 하나는 표준오차를 직접 계산하는 방식이고,
+하나는 실제 표본평균들의 표준편차를 numpy의 std함수를 이용하여 계산하는 방식이다.
+전자의 방식은 점선으로, 후자의 방식은 실선으로 나타내고 있는데, 그래프를 보면 둘의 값이 거의 일치함을 확인할 수 있다.  
+
+표본평균의 표준편차는 
+
+#### 3-4. 불편분산
+표본분산을 10만회 계산하여 그 평균치를 내 보면 모분산보다 항상 작은 값이 나온다. (과소평가)
+이러한 편향성을 제거한 것이 불편분산이다. 이전에 말한 ddof(자유도) 값을 1로 수정함으로써 얻을 수 있다.  
+
+불편분산 또한 샘플 사이즈에 영향을 받는다.
+
+```python
+size_array = np.arange(start=10, stop=100100, step=100)
+unbias_var_array_size = np.zeros(len(size_array))
+np.random.seed(1)
+for i in range(0, len(size_array)):
+    sample = population.rvs(size=size_array[i])
+    unbias_var_array_size[i] = np.var(sample, ddof=1)
+plt.plot(size_array, unbias_var_array_size, color='black')
+plt.xlabel('sample_size')
+plt.ylabel('unbias_var')
+```
+
+<img src='/images/posts/20210122-08.png'>  
+3-2에서 표본을 추출하는 것과 동일하다. 여기서는 샘플 사이즈가 다른 각각의 표본의 불편분산을 구하여 이를 그래프로 나타내고 있다.
+결과 그래프에서 확인할 수 있듯, 샘플 사이즈가 커질수록 불편분산은 모분산과 가까워진다.
