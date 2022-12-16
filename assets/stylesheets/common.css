@@ -24,9 +24,18 @@ a:visited {
 }
 
 .font-eng {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .font-bold {
   font-weight: bold;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+@font-face {
+  font-family: RIDIBatang;
+  src: url();
 }

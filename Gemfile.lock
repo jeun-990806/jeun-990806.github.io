@@ -14,7 +14,8 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
-    ffi (1.15.5-x64-mingw-ucrt)
+    ffi (1.15.5)
+    ffi (1.15.5-x64-unknown)
     forwardable-extended (2.6.0)
     gemoji (4.0.1)
     html-pipeline (2.14.3)
@@ -60,8 +61,10 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    mini_portile2 (2.8.0)
     minitest (5.16.3)
-    nokogiri (1.13.10-x64-mingw-ucrt)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -80,19 +83,18 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.3.0)
-    wdm (0.1.1)
     webrick (1.7.0)
 
 PLATFORMS
-  x64-mingw-ucrt
+  x64-unknown
+  x86_64-linux
 
 DEPENDENCIES
   jekyll
   jekyll-feed
   jekyll-readme-index
   jemoji
-  wdm (>= 0.1.0)
   webrick
 
 BUNDLED WITH
-   2.3.16
+   2.3.26

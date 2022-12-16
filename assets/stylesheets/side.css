@@ -32,5 +32,12 @@
   box-sizing: border-box;
 
   border-bottom: solid 1px black;
-  border-top: solid 1px black;
+}
+
+.menu-entry:first-child {
+  border-top: solid 2px black;
+}
+
+.menu-entry:last-child {
+  border-bottom: solid 2px black;
 }
