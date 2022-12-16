@@ -1,0 +1,12 @@
+.main {
+  display: inline-block;
+
+  padding: 1em;
+
+  width: 100%;
+
+  border-left: solid 1px grey;
+  border-right: solid 1px grey;
+
+  background-color: white;
+}

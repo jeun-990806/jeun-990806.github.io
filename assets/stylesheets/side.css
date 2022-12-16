@@ -1,0 +1,36 @@
+.side {
+  display: flex;
+  padding: 0.5em;
+}
+
+.side nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-title {
+  display: inline-block;
+  margin-bottom: 1em;
+  width: fit-content;
+  border-bottom: double 3px black;
+}
+
+.site-description {
+  color: gray;
+}
+
+.menu {
+  padding: 0;
+
+  list-style: none;
+}
+
+.menu-entry {
+  padding: 0.5em 0.5em 0.5em 1em;
+
+  width: 14em;
+  box-sizing: border-box;
+
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+}

@@ -1,0 +1,32 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+.font-small {
+  font-size: 12px;
+}
+
+.font-middle {
+  font-size: 14px;
+}
+
+.font-mid-large {
+  font-size: 16px;
+}
+
+.font-large {
+  font-size: 18px;
+}
+
+.font-eng {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.font-bold {
+  font-weight: bold;
+}
