@@ -4,7 +4,7 @@ longtitle: Return-Zero;
 author: Jieun
 email: kjeun990806@gmail.com
 description: >
-  des.
+  .
 
 version: 1.0
 gitbook_version: 3.2.3
@@ -42,6 +42,5 @@ plugins:
   - jekyll-readme-index
   - jemoji
 
-cc:
-  - aa
-  - bb
+category_list:
+  - paper_reviews
