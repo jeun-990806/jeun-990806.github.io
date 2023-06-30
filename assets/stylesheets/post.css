@@ -1,0 +1,22 @@
+.post-metadata-list {
+    text-align: right;
+    list-style-type: none;
+    font-size: 12px;
+    color: rgba(128, 128, 128, 0.582);
+    font-family: "Courier New", Courier, monospace;
+}
+
+.post-content { 
+    line-height: 1.4em;
+    font-size: 12px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.post-content ul {
+    padding-left: 2em;
+}
+
+
+.post-content ul li p {
+    margin: 0;
+}

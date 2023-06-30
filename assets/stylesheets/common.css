@@ -7,6 +7,15 @@ a:visited {
   color: black;
 }
 
+code {
+    text-wrap: wrap;
+}
+
+::selection {
+    background-color: gainsboro;
+    text-decoration: underline;
+}
+
 .font-small {
   font-size: 12px;
 }
