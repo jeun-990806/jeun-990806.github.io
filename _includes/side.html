@@ -1,23 +1,14 @@
 <div class="side">
   <nav role="navigation">
     <span class="site-title font-eng font-bold">
-      <a href=".">{{ site.title | escape }}</a>
+      <a href="/">{{ site.title | escape }}</a>
     </span>
 
     <span class="site-description font-small"> {{ site.description }} </span>
     <ul class="menu">
-      {% for category in site.cc %}
-      <li class="menu-entry font-small">{{ category }}</li>
+      {% for category in site.category_list %}
+      <li class="menu-entry font-small"><a href="{{ site.baseurl }}/category/{{ category }}">{{ category }}</a></li>
       {% endfor %}
     </ul>
-    <!--
-        <div id="book-search-input" role="search">
-            <input type="text" placeholder="Type to search" />
-        </div>
-        
-        <div id="book-search-input-link" role="search">
-            <a href="{{site.baseurl}}/assets/search.html">Click to Search</a>
-        </div>
-        -->
   </nav>
 </div>

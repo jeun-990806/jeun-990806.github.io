@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+    <head>
+        {%- include head.html -%}
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <div class="wrapper-horizontal">
+                <div class="main">
+                    <div class="body-inner">
+                        <h3 class="font-eng">{{ page.category }}</h3>
+                        {% for post in site.posts %}
+                            {% if post.category == page.category %}
+                                <li>
+                                    <a href="{{ post.url }}">{{ post.title }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {%- include side.html -%}
+            </div>
+            {%- include footer.html -%}
+        </div>
+    </body>
+
+</html>
