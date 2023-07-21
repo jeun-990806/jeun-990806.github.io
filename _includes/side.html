@@ -7,7 +7,13 @@
     <span class="site-description font-small"> {{ site.description }} </span>
     <ul class="menu">
       {% for category in site.category_list %}
-      <li class="menu-entry font-small"><a href="{{ site.baseurl }}/category/{{ category }}">{{ category }}</a></li>
+        {% assign post_count = 0 %}
+        {% for post in site.posts %}
+            {% if post.category == category %}
+            {% assign post_count = 1 | plus: post_count %}
+            {% endif %}
+        {% endfor %}
+      <li class="menu-entry font-small"><a href="{{ site.baseurl }}/category/{{ category }}">{{ category }}</a> ({{ post_count }})</li>
       {% endfor %}
     </ul>
   </nav>
