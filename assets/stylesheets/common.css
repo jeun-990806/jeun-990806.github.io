@@ -9,6 +9,24 @@ a:visited {
 
 code {
     text-wrap: wrap;
+    padding: 0.2em;
+    font-family: Consolas;
+}
+
+pre {
+    text-wrap: wrap;
+    margin: 0.7em;
+    padding: 0.4em;
+    border: solid 1px rgb(230, 230, 230);
+    border-radius: 5px;
+    background-color: rgb(240, 236, 231);
+    font-family: Consolas;
+}
+
+.language-plaintext {
+    background-color: rgb(231, 222, 209);
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 ::selection {
@@ -32,19 +50,10 @@ code {
   font-size: 18px;
 }
 
-.font-eng {
-  font-family: "Courier New", Courier, monospace;
-}
-
 .font-bold {
   font-weight: bold;
 }
 
 .no-margin {
   margin: 0;
-}
-
-@font-face {
-  font-family: RIDIBatang;
-  src: url();
 }
